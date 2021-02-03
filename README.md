@@ -4,9 +4,9 @@
 
 #### 학습 출처
 
-+ Html
-  + Kimbug
-+ Css
-  + Private
-+ Js
-+ React
+- Html
+  - Kimbug
+- Css
+  - Private
+- Js
+- React
