@@ -9,7 +9,7 @@
 - Css
   - Private
 - SASS
-  + Private
+  - Private
 - Js
-  + Nomad Coder
+  - Word-Relay
 - React
