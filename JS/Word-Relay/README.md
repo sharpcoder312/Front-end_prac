@@ -6,4 +6,4 @@
 
 + sub
 
-  <img src="./assets/sub.jpg">
+<img src="./assets/sub.jpg">
