@@ -11,5 +11,7 @@
 - SASS
   - Private
 - Js
+  - Calculater
+  - NumberBaseballGame
   - Word-Relay
 - React
