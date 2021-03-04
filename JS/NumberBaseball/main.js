@@ -19,7 +19,7 @@ for (let n = 0; n < 9; n += 1) {
 // 함수가 한번 돌고나면 요소가 하나 줄어들 것인데, 하필 다음 함수가 돌때 남은 요소 개수보다 큰 index값이 무작위에서 뽑혀나온다면 undefined가 나오는 원리이다.
 
 const answer = [];
-for (let n = 0; n < 2; n++) {     // 4번 반복
+for (let n = 0; n < 4; n++) {     // 4번 반복
   const index = Math.floor(Math.random() * numbers.length);      // numbers 길이에 따라
   answer.push(numbers[index]);
   numbers.splice(index, 1);
