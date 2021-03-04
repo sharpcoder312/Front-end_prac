@@ -36,7 +36,7 @@ for (let n = 1; n <= 9; n += 1) {
   numbers.push(n);
 }
 
-const numbers = Array(9).fill.map((v, i) => i + 1);
+const numbers = Array(9).fill().map((v, i) => i + 1);
 // 배열의 메서드는 강력하기에 위 코드처럼 for문을 아예 사용하지 않고, 모든 값을 배열로 만들어서 처리할 수도 있다.
 // fill() - 배열의 요소로 undefined를 채워넣는 메서드
 // map() - 요소들을 일대일로 짝지어 다른 값으로 변환하는 메서드
