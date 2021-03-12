@@ -4,14 +4,18 @@
 
 #### 학습 출처
 
-- Html
+- HTML
   - Kimbug
-- Css
+- CSS
   - Private
 - SASS
   - Private
-- Js
+- JS
   - Calculater
+  - Clock
+  - Dom
+  - Lotto
   - NumberBaseballGame
+  - TODO
   - Word-Relay
 - React
