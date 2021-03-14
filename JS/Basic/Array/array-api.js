@@ -58,5 +58,88 @@ const students = [
   const result = students.find(function (student) {
     return student.score === 90;
   });
+  // const result = students.find(student => student.score === 90;)
+  console.log(result);
 }
 
+
+
+
+// Q6. make an array of enrolled students
+{
+  const result = students.filter(function (student) {
+    return student.enrolled === true;
+  });
+  // const result = students.filter(student => student.enrolled)  true 굳이 안 적어줘도됨.
+  console.log(result);
+}
+
+
+
+
+// Q7. make an array containing only the students' scores
+// result should be: [45, 80, 90, 66, 88]
+{
+  const result = students.map(student => student.score);
+  console.log(result);
+}
+
+
+
+
+// Q8. check if there is a student with the score lower than 50
+{
+  const result = students.some(student => student.score < 50);
+  console.log(result);
+}
+
+
+
+
+// Q9. compute students' average score
+{
+  const result = students.reduce((acc, cur) => {    //    accmulate 축적하다
+    return acc + cur.score
+  }, 0)
+  console.log(result / students.length);
+
+  // const result = students.reduce((acc, cur) => {    //    accmulate 축적하다
+  //   return acc + cur.score / students.length
+  // }, 0)
+  // console.log(result.toFixed(1));
+}
+
+
+
+
+// Q10-1. make a string containing all the scores
+// result should be: '45, 80, 90, 66, 88'
+{
+  const result = students.map(student => student.score).join();
+  console.log(result);
+
+  // const result = students.map(student => student.score);
+  // console.log(result.join(','));
+}
+
+// Q10-2. make a string containing all the score upper than 50
+{
+  const result = students
+    .map(student => student.score)
+    .filter(score => score >= 50)
+    .join();    //  이렇게 묶어서 쓰면 가독성도 좋다.
+  console.log(result);
+}
+
+
+
+
+// Bonus! do Q10 sorted in ascending order
+// result should be: '45, 66, 80, 88, 90'
+{
+  const result = students
+    .map(student => student.score)
+    .sort((a, b) => a - b)
+    .join();
+  console.log(result);
+}
