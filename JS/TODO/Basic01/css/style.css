@@ -44,11 +44,11 @@
 }
 
 .todo-item {
-  flex: 15;
+  flex: 8;
 }
 
 .todo-manage {
-  flex: 3;
+  flex: 1;
   display: flex;
   justify-content: space-between;
 }
