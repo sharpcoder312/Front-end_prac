@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  letter-spacing: -0.02em;
+  background-color: #E5E5E5;
+}
+
+a {
+  font-size: 18px;
+  line-height: 20px;
+  color: #8492a6;
+  text-decoration: none;
+}
+
+/* ▼ WHERE YOUR CODE BEGINS */
+
+.tab-menu {
+  list-style-type: none;
+  padding-left: 0%;
+  border-bottom:  1px solid white;
+  background-color: white;
+  max-width: 600px;      
+} 
+/* width의 최댓값 설정 */
+.tab-menu::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.tab-menu-items {
+  float: left;
+  margin-right: 16px;
+}
+
+.tab-menu-items a {
+  padding: 16px 20px;
+  display: block;
+}
+
+/* 더 깔끔한 레이아웃 용도 */
+.tab-menu-item:last-child {
+  margin-right: 0;             
+}
+
+.tab-menu-items.active:active{
+  color: #2860E1;
+  border-bottom:  3px solid #2860E1;
+  font-weight: 500;
+}
+
