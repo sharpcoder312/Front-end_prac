@@ -21,6 +21,11 @@
   /* linear-gradient(방향, 색상1, 색상2) 방향은 생략 가능 */
 }
 
+.allDelete {
+  text-align: right;
+  font-size: 5px;
+}
+
 .input-box>label {
   display: none;
 }
@@ -45,6 +50,15 @@
 
 .todo-item {
   flex: 8;
+}
+
+.done .todo-item {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+.done .check {
+  visibility: hidden;
 }
 
 .todo-manage {
