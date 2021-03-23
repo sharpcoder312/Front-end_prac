@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  letter-spacing: -0.02em;
+  background-color: #afb3b9;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #1f2d3d;
+  line-height: 1.25;
+}
+
+strong {
+  font-size: 14px;
+  font-weight: 400;
+  color: #afb3b9;
+  line-height: 1.4285714286;
+}
+
+p {
+  font-size: 16px;
+  color: #79818b;
+  line-height: 1.5;
+}
+
+.card {
+  max-width: 540px;
+  padding: 20px;
+  background-color: #fff;
+}
+/* width가 아닌 max-width를 준 이유 생각해보기 */
+
+.card::after {
+  content: "";
+  display: block;
+  clear: left;
+}
+
+.card-user {
+  /* display: block; float되면 자동으로 block으로 되기 때문에 따로 해줄 필요 없다. */
+  float: left;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.card-content {
+  float: left;
+}
+
+.card-content h1 {
+  /* display: block; h태그는 본래 block 태그이다. */
+  margin-bottom: 4px;
+}
+
+.card-content strong {
+  display: block;
+  margin-bottom: 12px;
+}
