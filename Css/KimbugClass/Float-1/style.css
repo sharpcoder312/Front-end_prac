@@ -16,16 +16,20 @@ a {
   text-decoration: none;
 }
 
-/* ▼ WHERE YOUR CODE BEGINS */
-
-.tab-menu {
+ul {
   list-style-type: none;
   padding-left: 0%;
+} 
+/* .tab-menu가 아닌 ul로 지정해준 이유를 생각해보자. */
+
+.tab-menu {
+  /* overflow: hidden; */
   border-bottom:  1px solid white;
   background-color: white;
   max-width: 600px;      
 } 
 /* width의 최댓값 설정 */
+
 .tab-menu::after {
   content: "";
   clear: both;
@@ -38,16 +42,17 @@ a {
 }
 
 .tab-menu-items a {
-  padding: 16px 20px;
   display: block;
+  padding: 16px 20px;
 }
+/* display block을 해준 이유와 padding을 .tab-menu-items가 아닌 a 태그에 지정해준 이유를 생각 해보자 */
 
 /* 더 깔끔한 레이아웃 용도 */
-.tab-menu-item:last-child {
+.tab-menu-items:last-child {
   margin-right: 0;             
 }
 
-.tab-menu-items.active:active{
+.tab-menu-items.active a{
   color: #2860E1;
   border-bottom:  3px solid #2860E1;
   font-weight: 500;
