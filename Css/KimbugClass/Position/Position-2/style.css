@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  letter-spacing: -0.02em;
+  background-color: #E5E5E5;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1f2d3d;
+  line-height: 1.4545454545;
+}
+
+span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #7d858f;
+  line-height: 1.5;
+}
+
+strong {
+  font-size: 22px;
+  color: #2860e1;
+  line-height: 1.0909090909;
+}
+
+strong span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #525d69;
+  line-height: 1.5;
+}
+
+button {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+}
+
+.card {
+  max-width: 400px;
+}
+
+.card-carousel {
+  position: relative;
+}
+
+.card-carousel img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* img태그 크기 설정 시 부모에게 width값 주고 width 100% height auto 유형 잦음 */
+
+#prev {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: url(./assets/icon-backward.svg);
+}
+
+#next {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: url(./assets/icon-forward.svg);
+}
+/* top 45%해도 상관은 없을 것 같지만 위와 같은 방법이 더 시멘틱하고 정확하다. */
+
+.card-content {
+  padding: 12px 16px;
+  background-color: #fff;
+}
+
+.card-content h1 {
+  margin-bottom: 2px;
+}
+
+.card-content strong {
+  display: block;
+  margin-top: 8px;
+  text-align: right;
+}

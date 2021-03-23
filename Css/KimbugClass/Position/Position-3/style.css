@@ -1,0 +1,100 @@
+/* 총평 : modal과 같이 그 자체로 viewpoint 내에서 
+스크롤과는 상관없이 특정 위치에 고정 시키는 요소는 
+최대한 content내에서 형식을 맞춰놓는 편이 좋다 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: "Nunito Sans", sans-serif;
+  color: #273444;
+  background-color: #E5E5E5;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  box-shadow: none;
+  outline: none;
+}
+
+.modal {
+  /* position: relative;
+  max-width: 670px;
+  height: auto; 내가 처음 쓴 코드 // modal 같은 경우 대부분 화면 정중앙에 위치하며 absolute와 fixed는 자신의 content만큼 width값을 가진다는 것을 반드시 기억하자. */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 32px 40px;
+  background-color: #fff;
+}
+
+.modal-title {
+  margin-bottom: 4px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.6666666667;
+  text-align: center;
+}
+
+.modal-desc {
+  max-width: 590px;
+  margin: 0 auto 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+/* block 계열을 가운데 배치하기 위해서는 양쪽 margin을 골고루 분배할 수 있는 margin auto를 사용할 수 있다. */
+
+.input-group {
+  text-align: center;
+}
+/* input과 button 모두 inline-block 이기 때문에 text-align으로 가운데 정렬 가능하다. */
+
+.input-group input,
+.input-group button {
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  line-height: 1.4285714286;
+}
+
+.input-group input {
+  padding: 8px 16px;
+  /* width: 200px;
+  height: 36px; */
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #F6F8FA;
+}
+/* 보통 input과 button은 좌우 padding만 설정하는데
+세로 padding값을 주지않아도 height를 설정한다면 자동으로 텍스트를 가운데 배치할 수 있기 때문이다. */
+
+
+.input-group button {
+  padding: 8px 13px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #2860E1;
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+  background-image: url(./assets/icon-close.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
