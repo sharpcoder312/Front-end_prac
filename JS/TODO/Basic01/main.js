@@ -1,6 +1,6 @@
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector(".todo-list");
-const likeButton = document.querySelector(".like");
+// const likeButton = document.querySelector(".like");
 const allDeleteButton = document.querySelector(".allDelete");
 
 // likeButton.addEventListener("click", () => {
@@ -33,7 +33,7 @@ const generateLike = () => {
   icon.classList.add("material-icons");
   icon.classList.add("like");
   icon.innerText = "favorite_border"
-  span.appendChild(icon);
+  span.appendChild(icon); // icon에 대한 모든 정보를 기입 후 icon에 대한 event 삽입
   icon.addEventListener("click", () => {  // addEventListener를 해당 부분에 추가한 이유를 생각해보자
     // '3항 연산자'도 사용 가능
     // icon.innerText === 'favorite_border' ?
@@ -48,10 +48,10 @@ const generateLike = () => {
   return span;      // return을 통해 반환 받은 것을 다시 likeSpan로 가져가 사용할 수 있다.
 }
 
-const generateItem = (todoo) => {
+const generateItem = (todo) => {
   const span = document.createElement("span");
   span.classList.add("todo-item");
-  span.innerText = todoo;
+  span.innerText = todo;
   return span;
 }
 
@@ -66,16 +66,17 @@ const generateManage = () => {
   icon2.classList.add("material-icons");
   icon2.classList.add("clear");
   icon2.innerText = "clear";
-  icon1.addEventListener("click", (e) => {
-    const li = e.target.parentNode.parentNode;  // e의 icon1의 span의 li
+  icon1.addEventListener("click", (e) => {      // eventlistener를 맨 밑이 아닌 여기에 입력한 이유를 생각해보자.
+    const li = e.target.parentNode.parentNode;  // e의 icon1의 span의 li  
     li.classList.add('done');
     console.log(li);
   })
   icon2.addEventListener("click", (e) => {
-    const li = e.target.parentNode.parentNode;  // e의 icon1의 span의 li
+    const li = e.target.parentNode.parentNode;  // e의 icon2의 span의 li
     todoList.removeChild(li);
+    // = todoList.removeChild(document.querySelector("li"));
   })
-  span.appendChild(icon1);
+  span.appendChild(icon1);      // icon의 모든 기능을 구현한 다음에 span의 자식으로 편입
   span.appendChild(icon2);
   return span;
 }
@@ -88,5 +89,5 @@ const generateDelete = () => {
 
 
 
-todoInput.addEventListener("keypress", handleKeypress);
+todoInput.addEventListener("keypress", handleKeypress); // 다 rendering된 다음에 listner로 연결하여 실행 시키기위해 맨마지막에 추가
 allDeleteButton.addEventListener("click", generateDelete);
