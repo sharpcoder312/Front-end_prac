@@ -1,0 +1,97 @@
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  letter-spacing: -0.015em;
+}
+/* letter-spacing은 font-siz와 line-height와 같이 적어야하지만
+tiny에서 h1까지 모두 동일 값을 가지기 때문에 body에 한번만 적어준다 */
+
+/* Font Size */
+/* fs는 font size를 뜻하며 라이브러리 작성시
+일관성있게 키워드를 적어주는 것이 좋다 */
+
+.fs-tiny {
+  font-size: 12px;
+  line-height: 1.3333333333;
+}
+
+.fs-small {
+  font-size: 14px;
+  line-height: 1.4285714286;
+}
+
+.fs-base {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.fs-medium {
+  font-size: 18px;
+  line-height: 1.5555555556;
+}
+
+.fs-large {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.fs-h2 {
+  font-size: 28px;
+  line-height: 1.4285714286;
+}
+
+.fs-h1 {
+  font-size: 34px;
+  line-height: 1.4117647059;
+}
+
+/* Font Weight */
+
+.fw-light {
+  font-weight: 300;
+}
+
+.fw-regular {
+  font-weight: 400;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+/* Color */
+
+.text-dark {
+  color: #1f2d3d;
+}
+
+.text-primary {
+  color: #3c4858;
+}
+
+.text-secondary {
+  color: #8492a6;
+}
+
+.text-tertiary {
+  color: #c0ccda;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-success {
+  color: #13ce66;
+}
+
+.text-error {
+  color: #ff5216;
+}
+
+.text-info {
+  color: #009eeb;
+}

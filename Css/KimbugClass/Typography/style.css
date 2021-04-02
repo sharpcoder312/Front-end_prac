@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+.container {
+  width: 100%;
+  max-width: 736px;
+  padding: 48px;
+  margin: 0 auto;
+}
+.fs-h1.fw-light.text-dark {
+  margin-bottom: 48px;
+}
+.fs-base.fw-bold.text-dark {
+  margin-bottom: 8px;
+}
+.fs-base.fw-regular.text-primary {
+  margin-bottom: 32px;
+}
+.fs-h2.fw-regular.text-dark {
+  margin-bottom: 24px;
+}
+
+
+/* 사실 class값을 입력할 필요가 없다
+그냥 tag값 적는 것이 편하다 */
