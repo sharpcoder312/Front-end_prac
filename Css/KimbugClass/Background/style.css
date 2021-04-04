@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  /* font-family: 'Poppins', sans-serif; 보통 body에 적음*/
+}
+body {
+  background-color: rgb(203, 204, 206);
+  font-family: 'Poppins', sans-serif;
+}
+.sr-only {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  z-index: -10000000000000000000000000000000000000000000000000;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+}
+/* position: absolute;
+z-index: -100;
+width: 1px;
+height: 1px;
+overflow: hidden;
+opacity: 0; 이렇게 사용할 수도 있다 */
+
+.card {
+  display: flex;
+  justify-content: flex-start;
+  width: 840px;
+  height: 248px;
+  padding: 24px;
+  background-color: #fff;
+}
+.card-image {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  border-radius: 6px;
+  margin-right: 24px; /**/
+  background-image: url(./assets/images/jamill-del-rosario-jn3w2ouoPv4-unsplash.jpg);
+  background-position: center center; /**/
+  background-repeat: no-repeat;
+  background-size: cover; /**/
+  /* background-repeat: no-repeat;
+  background-size: auto 100%; */
+} 
+
+/*like-button 보다 아래가 낫다. 범위의 정확성*/
+.card-image .like-button {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 36px;
+  height: 36px;
+  border: none; /**/
+  border-radius: 50%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #fff; /**/
+  background-image: url(./assets/images/icon-favorite.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 24px 24px;
+  cursor:pointer; /**/ /*button내에 content가 존재하지 않으면 커서가 반응하지 않기에 꼭 넣어준다*/
+}
+.card-content {
+  flex-grow: 1;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.plus-badge {
+  display: inline-block;
+  /* width: 48px;
+  height: 22px; 이거 쓸거면 
+  flex center center할 때가 맞을듯
+  요소 전체영역이 링크의 역할할 때
+  또한, 상하좌우 기준 정중앙에 text오게 하려면
+  padding값을 일정하게 주는 것이 맞다*/
+  /* text-align: center; 
+  마찬가지로 padding값 주면 필요가 없다*/
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4285714286;
+  color: #fff;
+  text-transform: uppercase; /**/
+  background-color: #92174D;
+}
+.property-type span {
+  font-size: 16px;
+  line-height: 1.25;
+  color: #7D858F;
+}
+.property-rate {
+  font-size: 16px;
+  line-height: 1.25;
+}
+.property-rate strong{
+  font-weight: 400;  /*400대신 normal이라고 적어도됨*/
+  color: #151B26;
+
+}
+.property-rate span{
+  color: #7D858F;
+}
+.property-rate::before{
+  content: "";
+  position: relative; /**/ /*inline-block요소의 약점 보완*/
+  top: 2px; /**/
+  display: inline-block; /*property-rate에 flex 주고 배치해도 될듯*/
+  width: 16px;
+  height: 16px;
+  background-image: url(./assets/images/icon-star.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.card-title {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #151B26;  
+}
+
+/*card-detail보다는 범주의 확실성을 위해 property가 낫겠다*/
+.property-detail {    
+  font-size: 14px;
+  line-height: 1.14;
+  color: #7D858F;
+}
+.property-detail dd span::after {
+  content: '·';
+  margin: 0 6px; /*margin left,right는 inline요소도 조절 가능하다*/
+}
+.property-detail dd span:last-child::after {
+  content: '';
+  margin: 0;
+}
+.property-detail div:first-child {
+  margin-bottom: 8px;
+}
+
