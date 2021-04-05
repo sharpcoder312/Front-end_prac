@@ -11,7 +11,7 @@ body {
   position: absolute;
   top: -9999px;
   left: -9999px;
-  z-index: -10000000000000000000000000000000000000000000000000;
+  z-index: -100;
   width: 1px;
   height: 1px;
   overflow: hidden;
@@ -23,6 +23,7 @@ width: 1px;
 height: 1px;
 overflow: hidden;
 opacity: 0; 이렇게 사용할 수도 있다 */
+/* 하지만 diplay: none을 해줘선 안된다. sr까지 해당 요소를 읽지 못 한다. */
 
 .card {
   display: flex;
@@ -36,15 +37,18 @@ opacity: 0; 이렇게 사용할 수도 있다 */
   position: relative;
   width: 300px;
   height: 200px;
+  margin-right: 24px; 
   border-radius: 6px;
-  margin-right: 24px; /**/
-  background-image: url(./assets/images/jamill-del-rosario-jn3w2ouoPv4-unsplash.jpg);
-  background-position: center center; /**/
+  background-image: url(./assets/images/img-house.jpg);
+  background-position: center center; 
   background-repeat: no-repeat;
-  background-size: cover; /**/
-  /* background-repeat: no-repeat;
-  background-size: auto 100%; */
+  background-size: cover; 
 } 
+
+/* .card-image img {
+  width: 100%;
+  height: auto;
+} */
 
 /*like-button 보다 아래가 낫다. 범위의 정확성*/
 .card-image .like-button {
@@ -53,15 +57,15 @@ opacity: 0; 이렇게 사용할 수도 있다 */
   left: 12px;
   width: 36px;
   height: 36px;
-  border: none; /**/
+  border: none; 
   border-radius: 50%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #fff; /**/
+  background-color: #fff; 
   background-image: url(./assets/images/icon-favorite.svg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 24px 24px;
-  cursor:pointer; /**/ /*button내에 content가 존재하지 않으면 커서가 반응하지 않기에 꼭 넣어준다*/
+  cursor:pointer; /*button내에 content가 존재하지 않으면 커서가 반응하지 않기에 꼭 넣어준다*/
 }
 .card-content {
   flex-grow: 1;
@@ -75,11 +79,9 @@ opacity: 0; 이렇게 사용할 수도 있다 */
 .plus-badge {
   display: inline-block;
   /* width: 48px;
-  height: 22px; 이거 쓸거면 
-  flex center center할 때가 맞을듯
-  요소 전체영역이 링크의 역할할 때
-  또한, 상하좌우 기준 정중앙에 text오게 하려면
-  padding값을 일정하게 주는 것이 맞다*/
+  height: 22px; 
+  이거 쓸거면 flex center center할 때가 맞을듯.
+  요소 전체영역이 링크의 역할할 때 상하좌우 기준 정중앙에 text오게 하려면 padding값을 일정하게 주는 것이 맞다*/
   /* text-align: center; 
   마찬가지로 padding값 주면 필요가 없다*/
   padding: 1px 8px;
@@ -89,7 +91,7 @@ opacity: 0; 이렇게 사용할 수도 있다 */
   font-weight: 500;
   line-height: 1.4285714286;
   color: #fff;
-  text-transform: uppercase; /**/
+  text-transform: uppercase;
   background-color: #92174D;
 }
 .property-type span {
@@ -111,9 +113,9 @@ opacity: 0; 이렇게 사용할 수도 있다 */
 }
 .property-rate::before{
   content: "";
-  position: relative; /**/ /*inline-block요소의 약점 보완*/
-  top: 2px; /**/
-  display: inline-block; /*property-rate에 flex 주고 배치해도 될듯*/
+  position: relative; /*inline-block요소의 약점 보완*/
+  top: 2px; 
+  display: inline-block; /*property-rate에 flex 주고 배치해도 될듯. 또는 해당 요소 positon을 absoulte 하는 방법도 있긴함*/
   width: 16px;
   height: 16px;
   background-image: url(./assets/images/icon-star.svg);
