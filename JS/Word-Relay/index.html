@@ -4,19 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <script defer src="main.js"></script>
   <title>Word Relay</title>
 </head>
 <body>
-  <div>
-    <span class="order">1</span>번째 참가자
+  <div class="game">
+      <h4>
+        <span class="order">1</span>번째 참가자
+      </h4>
+    <div class="history">
+      제시어: <span class="word"></span>
+    </div>
+    <div class="send">
+      <input type="text" size="8" pattern="[가-힣]{3}" placeholder="세글자 단어">
+      <button>
+        입력
+      </button>
+    </div>
   </div>
-  <div>
-    제시어: <span class="word"></span>
-  </div>
-  <input type="text">
-  <button>
-    입력
-  </button>
 </body>
 </html>
