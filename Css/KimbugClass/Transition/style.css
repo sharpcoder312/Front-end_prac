@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: 'Lato', sans-serif;
+  background-color: rgb(221, 219, 215)
+}
+/* form과 관련된 요소는 body에 font를 적용해도 안먹는다 */
+.line-button {
+  position: relative;
+  display: inline-block;
+  padding: 18px 30px;
+  /* display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 56px;  이렇게 할수도 있겠다 */
+  border: none;
+  /* text-align: center; - 이거 대체 왜 썼니..?*/
+  font-size: 16px;
+  line-height: 1.25;
+  font-family: 'Lato', sans-serif;
+  background-color: #fff;
+}
+.line-button::after {
+  content: '';
+  position: absolute;
+  /* top: 54px; - 정말 바보같은 방법이였다*/
+  bottom: 0;
+  left: 0;
+  width: 0px;
+  height: 2px;
+  background-color: #0066FF;
+  transition: width 250ms;
+}
+.line-button:hover::after { /*! 해석 :button이 hover되었을 때 가상 요소는*/
+  width: 100%;
+}
