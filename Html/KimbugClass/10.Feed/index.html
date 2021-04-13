@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="feed">
+    <div class="feed-user-profile">   <!-- 이제보니 header로 묶어줘도 좋을듯 하다-->
+        <a href="#">
+          <img src="./bebop.png" alt="CowboyBebop"/>
+        </a> <!--a는 image안에 들어갈 수 없다-->
+
+        <div>
+          <h1>
+            <a href="#">Seok</a>
+          </h1>
+          <span aria-label="Posted 30 minutes ago">
+            30 min
+          </span>
+        </div>
+        
+      <button type="button">
+        Follow 
+      </button>
+    </div>
+
+    <div class="feed-content">
+      <blockquote>
+        The most beautiful experience we can have is the<br/> mysterious. It is the fundamental emotion that stands at the cradle of true art and true science.<br/> — <cite>Albert Einstein</cite> 
+      </blockquote>
+    </div>  <!--blockquote부분을 p로 단순 처리할 수도 있겠지만 detail을 살렸다-->
+    
+    <div class="feed-footer">
+      <button type="button">
+        10 Likes
+      </button>
+      <button type="button">
+        0 Comments
+      </button>
+    </div>
+<!--button과 form이 현재 연결돼있지만, 다 펼쳐놓고 html을 먼저 짠 뒤 js logic을 생각한다-->
+    <div class="feed-comment">
+      <form action="" method="POST"> <!--post인 이유 생각해보기-->
+        <textarea placeholder="Write a comment"></textarea>
+        <button type="submit">  <!--textarea는 form의 요소 중 하나이지만, 다른 요소들과 달리 입력 방법이 상이하다 ex)select&option // button-->
+          Submit
+        </button>
+      </form>
+    </div> 
+
+  </div>
+</body>
+</html>
+
+
+
