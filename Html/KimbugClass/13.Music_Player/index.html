@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="./app.js"></script>
+<body>
+  <ol class="music-player">      <!--왜 ul이 아닌 ol인지 생각해보기. 또한, 프론트처럼 하나일 땐 필요없겠지만, 2개 이상이라면 필요하다.-->
+    <li class="music-play-item">
+      <img class="music-album-cover" src="https://m.media-amazon.com/images/I/814Rp76DidL._SS500_.jpg" alt="러브 엑스 마키나" lang="ko"/> <!--더 정확한 마크업. lang값이 ko인 이유는 alt값과 연관하기 때문-->
+      <div class="music-info">
+        <div class="music-info-detail">
+          <h1>
+            <span lang="ko">러브 엑스 마키나</span>  <!--사실 이렇게까지 할 필요없는데 배우는 과정이니까 세세하게 하는거임-->
+            Love Ex Machina
+          </h1>
+          <strong> <!--시각적으로 굵게 표현하고 싶은 것이아닌, 먼저 의미를 생각하자 시각적 요소는 충분히 css로 커버 할 수 있다.-->
+            MLSL (밀레니엄 살롱)
+          </strong> <!--일반적이였다면 span이였을 것이다-->
+        </div>
+        <span aria-label="Duration 04:09">
+          04:09
+        </span>
+      </div>
+      <audio class="music-audio" src="./assets/music-1.mp3"></audio>
+    </li>
+  </ol>
+</body>
+</html>
+
+
+
+
+<!-- 
+## music-2
+
+http://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/080/660/591/80660591_1560403300605_1_600x600.JPG
+올라가
+권선홍
+03:33 -->
