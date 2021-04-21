@@ -4,19 +4,11 @@ let numTwo = '';
 
 const $operator = document.querySelector('#operator'); 
 const $result = document.querySelector('#result');
-
-// const onClickNumber = (number) => () => {
-//   if (operator) {
-//     numTwo += number;
-//   } else {
-//     numOne += number;
-//   }
-//   $result.value += number;
-// };
+const $num = document.querySelectorAll('.num');
 
 
 const onClickNumber = (event) => {
-  if (operator) {
+  if (operator) {         // operator가 빈 값이 아니라면
     if (!numTwo) {
       $result.value = '';
     }
@@ -24,22 +16,13 @@ const onClickNumber = (event) => {
   } else {
     numOne += event.target.textContent;
   }
-  $result.value += event.target.textContent;
+  $result.value += event.target.textContent;      
 };
 
-document.querySelector('#num-0').addEventListener('click', onClickNumber);
-document.querySelector('#num-1').addEventListener('click', onClickNumber);
-document.querySelector('#num-2').addEventListener('click', onClickNumber);
-document.querySelector('#num-3').addEventListener('click', onClickNumber);
-document.querySelector('#num-4').addEventListener('click', onClickNumber);
-document.querySelector('#num-5').addEventListener('click', onClickNumber);
-document.querySelector('#num-6').addEventListener('click', onClickNumber);
-document.querySelector('#num-7').addEventListener('click', onClickNumber);
-document.querySelector('#num-8').addEventListener('click', onClickNumber);
-document.querySelector('#num-9').addEventListener('click', onClickNumber);
-// 고차함수를 쓴다면 고차함수의 특징으로 인해 바로 함수가 호출되지 않아서 onClickNumber(0) ~ (9)을 써줘도 되지만
-// 고차함수의 특징을 쓰지않고 0~9의 공통점을 찾아 event.target.textContent로 코드를 짠다면
-// 이벤트리스너에서 함수를 ()를 이용하여 바로 호출해서는 안된다.
+for (const nums of $num) {
+  nums.addEventListener('click', onClickNumber);
+}
+
 
 
 
