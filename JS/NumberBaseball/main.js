@@ -2,11 +2,7 @@ const $input = document.querySelector('#input');
 const $form = document.querySelector('#form');  // form을 쓰는 경우에는 보통 input이 아닌 form에 eventlistener를 달아준다. form내의 다른 태그들을 가리키고 싶을 땐 event객체를 사용하자. ex) event.target[0] = input // event.target[1] = submit
 const $logs = document.querySelector('#logs');
 
-const numbers = [];
-for (let n = 0; n < 9; n += 1) {
-  numbers.push(n+1);
-}                       // 1 ~ 9까지의 숫자를 먼저 모아둔다.
-// const numbers = [0,1,2,3,4,5,6,7,8,9]; 를 쓰지않는 이유는 지금은 수의 범위가 적어서 괜찮겠지만 극단적으로 수가 많은 경우를 생각하자.
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // const answer = [];
 // for (let n = 0; n < 4; n++) {     // 4번 반복
@@ -20,10 +16,10 @@ for (let n = 0; n < 9; n += 1) {
 // 이렇게 예외를 발견하는 방법은 극단적인 수나 맨 처음 값, 맨 끝 값을 생각해보면 쉽게 생각할 수 있다.
 
 
-const answer = [];
+const answer = [];      // 숫자 4개를 뽑는다.
 for (let n = 0; n < 4; n++) {     // 4번 반복
   const index = Math.floor(Math.random() * numbers.length);      // numbers 길이에 따라
-  answer.push(numbers[index]);
+  answer.push(numbers[index]);    // 여기서 numbers[index]가 아닌 index를 넣게된다면 numbers의 1~9사이의 수를 넣는 것이 아니라 엉뚱하게 0~8을 넣어버린다. 그러면 answer배열 내에 중복되는 수가 발생할 수 있다.
   numbers.splice(index, 1);
 }
 console.log(answer);
@@ -41,7 +37,7 @@ function checkInput(input) {
     return alert('이미 시도한 값입니다.');
   }
   return true;                    // 검사 통과 - true return // 검사 실패 - false return
-}                                 // alert 함수는 기본적으로 undefined를 return한다. if문에서는 undefined를 flase 처리하므로 결과는 같다.
+}                                 // alert 함수는 기본적으로 undefined를 return한다. if문에서는 undefined를 false 처리하므로 결과는 같다.
 // 사실 위의 코드는 HTML5의 검증 기능으로도 대체 가능하다. ex) required, minlength, maxlength, pattern ...
 // 하지만 error 메세지의 디자인 변경이 어려우며 최근 잘 쓰지않는 추세이다.
 
@@ -50,15 +46,16 @@ $form.addEventListener('submit', (event) => {
   event.preventDefault();
   const value = $input.value;
   $input.value = '';              // === event.target[0].value = '';
-  const valid = checkInput(value);
-  if (!valid) return;
+  if (!checkInput(value)) {
+    return;
+  }
   if (answer.join('') === value) {
     $logs.textContent = '홈런!';
     return;
   }
   if (tries.length > 8) {     // 시도 횟수
     const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`)
-    $logs.appendChild(message);       // createTextNode와 appendChild를 쓴 이유는 textContent를 쓰면 기존 내용이 사라지기 때문이다.
+    $logs.appendChild(message);       // createTextNode와 appendChild를 쓴 이유는 textContent를 쓰면 기존 내용이 사라지기 때문이다. 그래서 홈런시에는 textContent를 썼다.
     return;
   }
 
@@ -69,7 +66,7 @@ $form.addEventListener('submit', (event) => {
   for (let i = 0; i < answer.length; i++) {
     const index = value.indexOf(answer[i]);
     if (index > -1) { // 일치하는 숫자 발견
-      if (index === 1) {  // 자릿수도 같음
+      if (index === i) {  // 자릿수도 같음
         strike += 1;
       } else {
         // 숫자만 같음
