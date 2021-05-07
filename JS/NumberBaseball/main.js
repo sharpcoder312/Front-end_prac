@@ -48,12 +48,14 @@ function checkInput(input) {
 // 하지만 error 메세지의 디자인 변경이 어려우며 최근 잘 쓰지않는 추세이다.
 
 
-const outList = [];
+let out = 0;
 function defeat() {
-  alert('아웃카운트 : 3 You Lose');
+  setTimeout(() => {
+    alert("3아웃 패배입니다");
+  }, 1000);
   setTimeout(() => {
     location.reload();
-    },1500);
+  },1500);
 }
 
 
@@ -97,13 +99,14 @@ $form.addEventListener('submit', (event) => {
     }
   }
   if (strike === 0 && ball === 0) {
-    outList.push(value);
-    $logs.append(`${value}: ${outList.length} 아웃`, document.createElement('br'));
-    if (outList.length > 2) {
-      defeat();
-    }
+    out++;
+    $logs.append(`${value}: ${out}아웃`, document.createElement('br'));
+  } else {
+    $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
+  }
+  if (out === 3) {
+    defeat();
     return;
   }
-  $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
   answerList.push(value);
 });
