@@ -25,8 +25,13 @@ for (let n = 0; n < 4; n++) { // 4번 반복
 console.log(answer);
 
 
-const tries = [];
+function first() {
+  $input.value = '';
+  $logs.textContent = '';
+}
 
+
+const answerList = [];
 function checkInput(input) {
   if (input.length !== 4) { // 길이는 4가 아닌가
     return alert('4자리 숫자를 입력하시오.')
@@ -34,7 +39,7 @@ function checkInput(input) {
   if (new Set(input).size !== 4) { // 중복된 숫자가 있는가
     return alert('중복되지 않게 입력하시오.')
   }
-  if (tries.includes(input)) { // 이미 시도한 값인가
+  if (answerList.includes(input)) { // 이미 시도한 값인가
     return alert('이미 시도한 값입니다.');
   }
   return true; // 검사 통과 - true return // 검사 실패 - false return
@@ -42,11 +47,13 @@ function checkInput(input) {
 // 사실 위의 코드는 HTML5의 검증 기능으로도 대체 가능하다. ex) required, minlength, maxlength, pattern ...
 // 하지만 error 메세지의 디자인 변경이 어려우며 최근 잘 쓰지않는 추세이다.
 
-let out = 0;
 
-function defeated() {
-  const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`);
-  $logs.appendChild(message);
+const outList = [];
+function defeat() {
+  alert('아웃카운트 : 3 You Lose');
+  setTimeout(() => {
+    location.reload();
+    },1500);
 }
 
 
@@ -59,11 +66,18 @@ $form.addEventListener('submit', (event) => {
   }
   if (answer.join('') === value) {
     $logs.textContent = '홈런!';
+    setTimeout(() => {
+      location.reload();
+      },1500);
     return;
   }
-  if (tries.length > 8) { // 시도 횟수
-    const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`)
-    $logs.appendChild(message); // createTextNode와 appendChild를 쓴 이유는 textContent를 쓰면 기존 내용이 사라지기 때문이다. 그래서 홈런시에는 textContent를 썼다.
+  if (answerList.length > 8) { // 시도 횟수
+    // const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`)
+    // $logs.appendChild(message); // createTextNode와 appendChild를 쓴 이유는 textContent를 쓰면 기존 내용이 사라지기 때문이다. 그래서 홈런시에는 textContent를 썼다.
+    $logs.append(`시도한 횟수가 10번이 넘습니다,, You Lose 정답은 ${answer.join('')}`);
+    setTimeout(() => {
+      location.reload();
+      },3000);
     return;
   }
 
@@ -83,15 +97,13 @@ $form.addEventListener('submit', (event) => {
     }
   }
   if (strike === 0 && ball === 0) {
-    out++;
-    $logs.append('아웃', document.createElement('br'));
-  } else {
-    $logs.append(`${value}:${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
-  }
-  if (out === 3) {
-    defeated();
+    outList.push(value);
+    $logs.append(`${value}: ${outList.length} 아웃`, document.createElement('br'));
+    if (outList.length > 2) {
+      defeat();
+    }
     return;
   }
   $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
-  tries.push(value);
+  answerList.push(value);
 });
