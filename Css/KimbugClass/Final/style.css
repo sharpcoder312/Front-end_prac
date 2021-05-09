@@ -42,6 +42,70 @@ p {
   font-size: 16px;
   line-height: 1.5;
   color: #2b292d;
+  letter-spacing: -0.01em;
+}
+
+
+
+.fill-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 48px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: -0.05em;
+  color: #fff;
+  background-color: #3040c4;
+  transition: opacity 300ms ease-in-out;
+}
+
+.fill-button.inverted {
+  color: #3040c4;
+  background-color: #fff;
+}
+
+.fill-button:hover {
+  opacity: 0.5;
+}
+
+/* landing */
+.landing {
+  text-align: center;
+  background-color: #fdded8;
+}
+
+ .landing-content {  /* landing-content를 추가해준 이유는 단순히 최대한 부트스트랩의 그리드시스템에 영향을 끼치지않기 위해서이다. */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.landing-title {
+  margin-bottom: 24px;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #2b292d;
+}
+
+.landing-desc {
+  margin-bottom: 20px;
+}
+
+.landing .button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing .button-group .fill-button:first-child {
+  margin-right: 8px;
 }
 
 /* ≥ 768px (Desktop) */
@@ -51,9 +115,36 @@ p {
     font-size: 22px;
     line-height: 1.363636;
   }
+
+  .fill-button {
+    width: 160px;
+    height: 56px;
+    font-size: 18px;
+    line-height: 1.555555;
+  }
+
+  /* landing */
+  .landing-content {
+    height: auto;
+    padding: 120px 0;
+  }
+
+  .landing-title {
+    margin-bottom: 32px;
+    font-size: 70px;
+  }
+
+  .landing-desc {
+    margin-bottom: 32px;
+    font-size: 20px;
+  }
+
+  .landing .button-group .fill-button:first-child {
+    margin-right: 16px;
+  }
 }
 
-/* Custom Grid System - Fox container width */
+/* Custom Grid System =Fix container width */
 @media screen and (min-width: 1200px) {
   .container {
     max-width: 960px;
