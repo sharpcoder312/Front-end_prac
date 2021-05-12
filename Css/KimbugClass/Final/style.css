@@ -78,7 +78,7 @@ p {
   background-color: #fdded8;
 }
 
- .landing-content {  /* landing-content를 추가해준 이유는 단순히 최대한 부트스트랩의 그리드시스템에 영향을 끼치지않기 위해서이다. */
+.landing-content {  /* landing-content를 추가해준 이유는 단순히 최대한 부트스트랩의 그리드시스템에 영향을 끼치지않기 위해서이다. */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,6 +106,23 @@ p {
 
 .landing .button-group .fill-button:first-child {
   margin-right: 8px;
+}
+
+  /* Service */
+.service {
+  padding: 80px 0;
+  background-color: #F4F5F7;
+}
+
+.service .col-12:first-child {
+  margin-bottom: 40px;
+}
+
+.service-title {
+  margin-bottom: 16px;
+  font-size: 22px;
+  line-height: 1.363636;
+  letter-spacing: -0.04em;
 }
 
 /* ≥ 768px (Desktop) */
@@ -141,6 +158,15 @@ p {
 
   .landing .button-group .fill-button:first-child {
     margin-right: 16px;
+  }
+
+  /* Service */
+  .service-title {
+    font-size: 26px;
+    line-height: 1.307692;
+  }
+   .service .col-12:first-child {   /* class col-12 col-md-6는 단순히 구역을 나눌 뿐이며 md사이즈로 왔다고 col-12의 스타일 특성이 사라지는 것은 아니다. 그러므로 초기값으로 변경해줘야한다. */
+    margin-bottom: 0;
   }
 }
 
