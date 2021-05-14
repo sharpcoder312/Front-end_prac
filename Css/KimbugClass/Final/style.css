@@ -72,6 +72,30 @@ p {
   opacity: 0.5;
 }
 
+.section {
+  padding: 80px 0;
+}
+
+.section-category {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.section-title {
+  margin-bottom: 24px;
+  color: #2b292d;
+  font-size: 34px;
+  line-height: 1.0588235;
+  letter-spacing: -0.03em;
+}
+
+.section-desc {
+  margin-bottom: 32px;
+}
+
 /* landing */
 .landing {
   text-align: center;
@@ -125,6 +149,52 @@ p {
   letter-spacing: -0.04em;
 }
 
+/* Program */
+.program .section-category {
+  color: #009B4D;
+}
+.program .col-md-4 {
+  margin-bottom: 20px;
+}
+
+.program .col-md-4:last-child {
+  margin-bottom: 0;
+}
+
+.program-card {
+  display: block;
+  padding: 24px 0 32px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.05), inset 0px 1px 0px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  transition: background-color 300ms ease-in-out,
+  box-shadow 300ms ease-in-out;
+}
+
+.program-card:hover {
+  background-color: #3141C5;
+  box-shadow: 0px 13px 18px rgba(0, 0, 0, 0.15), 0px 11px 55px rgba(0, 0, 0, 0.07);
+}
+
+.program-card:hover strong {
+  color: #fff;
+}
+
+.program-card img {
+  display: block;
+  width: auto;
+  height: 195px;
+  margin: 0 auto 16px;
+}
+
+.program-card strong {
+  font-size: 18px;
+  line-height: 1.333333;
+  letter-spacing: -0.02em;
+  transition: color 400ms ease-in-out
+}
+
 /* ≥ 768px (Desktop) */
 @media screen and (min-width: 768px) {
   /* Reset CSS */
@@ -138,6 +208,26 @@ p {
     height: 56px;
     font-size: 18px;
     line-height: 1.555555;
+  }
+
+  .section {
+    padding-bottom: 96px;
+  }
+
+  .section-category {
+    margin-bottom: 16px;
+    font-size: 22px;
+    line-height: 1.090909;
+  }
+
+  .section-title {
+    margin-bottom: 32px;
+    font-size: 56px;
+    line-height: 1;
+  }
+
+  .section-desc {
+    margin-bottom: 72px;
   }
 
   /* landing */
@@ -168,9 +258,23 @@ p {
    .service .col-12:first-child {   /* class col-12 col-md-6는 단순히 구역을 나눌 뿐이며 md사이즈로 왔다고 col-12의 스타일 특성이 사라지는 것은 아니다. 그러므로 초기값으로 변경해줘야한다. */
     margin-bottom: 0;
   }
+
+  /* Program */
+  .program {
+    text-align: center;
+  }
+
+  .program-card img {
+    margin-bottom: 24px;
+  }
+
+  .program-card strong {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }
 
-/* Custom Grid System =Fix container width */
+/* Custom Grid System = Fix container width */
 @media screen and (min-width: 1200px) {
   .container {
     max-width: 960px;
