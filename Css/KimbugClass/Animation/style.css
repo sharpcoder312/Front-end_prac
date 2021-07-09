@@ -55,6 +55,8 @@ body {
   animation-name: gauge;
   animation-duration: 1500ms;
   animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
 }
 
 @keyframes gauge {
@@ -70,7 +72,6 @@ body {
 
   100% {
     width: 100%;
-    opacity: 0;
+    opacity: 1;
   }
 }
-
