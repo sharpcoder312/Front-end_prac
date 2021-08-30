@@ -1,25 +1,15 @@
-import React from 'react'
-import Hello from './Hello'
-import './App.css';
+import React from 'react';  
+import Hello from './Hello';
+import Wrapper from './Wrapper'
+// 사실 import는 함수에 불러올 component를 입력하면서 자동 완성 기능을 통해 불러올 수도 있다.
 
 function App() {
-  const name = 'react';
-  const style = {
-    backgroundColor: 'black',
-    fontsize: '0.8rem'
-  }
-  return (
-    <>
-    {/* 주석작성1 */}
-      <Hello 
-        // 주석작성2
-      />
-      <Hello />
-      <Hello />
-      <div style={style}>{name}</div>
-      <div className="gray-box"></div>
-    </>
-  );
+    return (
+        <Wrapper>
+    	  <Hello name="리액트" color="red" />
+          <Hello color="pink" />
+        </Wrapper>
+    )
 }
 
 export default App;
