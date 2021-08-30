@@ -1,13 +1,24 @@
 import React from 'react'
 import Hello from './Hello'
+import './App.css';
 
 function App() {
+  const name = 'react';
+  const style = {
+    backgroundColor: 'black',
+    fontsize: '0.8rem'
+  }
   return (
-    <div>
+    <>
+    {/* 주석작성1 */}
+      <Hello 
+        // 주석작성2
+      />
       <Hello />
       <Hello />
-      <Hello />
-    </div>
+      <div style={style}>{name}</div>
+      <div className="gray-box"></div>
+    </>
   );
 }
 
