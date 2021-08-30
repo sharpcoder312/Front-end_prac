@@ -6,7 +6,7 @@ import Wrapper from './Wrapper'
 function App() {
     return (
         <Wrapper>
-    	  <Hello name="리액트" color="red" />
+    	  <Hello name="리액트" color="red" isSpecial={true} />
           <Hello color="pink" />
         </Wrapper>
     )
