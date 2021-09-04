@@ -15,6 +15,7 @@ function Counter() {
 
   return (
     <div>
+      <h5>07 usestate를 통해 컴포넌트에서 바뀌는 값 관리하기</h5>
       <h1>{number}</h1>
       <button onClick={Increase}>+1</button>
       <button onClick={Decrease}>-1</button>
