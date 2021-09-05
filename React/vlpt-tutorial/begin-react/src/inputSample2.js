@@ -41,8 +41,7 @@ function InputSample() {
 
   return (
     <div>
-      <h5>09 여러 개의input 상태 관리하기</h5> {/*  input에 name값을 설정하고 event가 발생했을 때 이 값을 참조 */}
-      <h5>10 useRef로 특정 DOM 선택하기</h5>
+      <h5>09 여러 개의 input 상태 관리하기, 10 useRef로 특정 DOM 선택하기</h5> {/*  input에 name값을 설정하고 event가 발생했을 때 이 값을 참조 */}
       <input name="name" placeholder="이름" onChange={changeContent} value={name} ref={nameInput}/>
       <input name="nickname" placeholder="닉네임" onChange={changeContent} value={nickname} />
       <button onClick={resetContent}>초기화</button>
