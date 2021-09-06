@@ -21,7 +21,7 @@ function App() {
       })
     }
 
-    const users = [
+    const [users, setUsers] = useState([ // 배열에 항목 추가(사용자 인터렉션에 따른 동적인 상태변화로 취급)를 위해 component의 state로 관리해준다.
       {
         id: 1,
         username: 'seok',
@@ -37,12 +37,20 @@ function App() {
         username: 'seokkk',
         email: 'seokkk.@example.com'
       },
-    ];
+    ]);
 
     const nextId = useRef(4); // 여기서 nextd를 useRef로 관리해준 이유는 4라는 값이 바뀐다고해서 굳이 component가 리렌더링 될 필요가 없기 때문이다.
 
     const onCreate = () => {
-      setInputs({
+      const user = {
+        id: nextId.current,
+        username,
+        email,
+        // 사실 여기서도 username과 email을 ...inputs로 대체할 수 있다.
+      }
+      setUsers([...users, user]); // 방법1 ...spread문법 사용
+      // setUsers(users.concat(user)); // 방법2 concat함수 사용
+      setInputs({ // 버튼 클릭 후 input에 있는 값 초기화
         username: '',
         email: ''
       })
