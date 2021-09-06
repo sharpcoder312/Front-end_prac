@@ -1,16 +1,23 @@
 import React from 'react';
 
-function User({ user, onRemove }) {
-  const { username, email, id } = user;
+function User({ user, onRemove, onToggle }) {
+  const { username, email, id, active } = user;
   return (
       <div>
-        <b>{username}</b><span>({email})</span>
+        <b style={{
+          color: active ? 'green' : 'black',
+          cursor: 'pointer'
+          }}
+            onClick={() => onToggle(id)}>
+          {username}
+        </b>
+        <span>({email})</span>
         <button onClick={() => onRemove(id)}>삭제</button>
       </div>
   )
 }
 
-function UserList({ users, onRemove }) {
+function UserList({ users, onRemove, onToggle }) {
 
   // return ( // ( 원시적 방법 )
   //   <div>
@@ -40,7 +47,7 @@ function UserList({ users, onRemove }) {
       <h5>11 배열의 렌더링</h5>
       {
         users.map(
-          user => (<User user={user} key={user.id} onRemove={onRemove} />) // 각 child(현재는 User)는 key props이 있어야함. key props은 각 원소들 마다 고유값을 줌으로써 리렌더링 성능을 최적화해줌.
+          user => (<User user={user} key={user.id} onRemove={onRemove} onToggle={onToggle} />) // 각 child(현재는 User)는 key props이 있어야함. key props은 각 원소들 마다 고유값을 줌으로써 리렌더링 성능을 최적화해줌.
           )
         // users.map (
         //   (user, index) => (<User user={user} key={index} />) // key로 사용할 고유값이 없을 때는 map 콜백함수의 두번째 parm인 index값을 사용하자. 하지만 이렇게한다고해서 성능이 좋아지는 것은 아니니 index를 넣어주는 것을 될수있으면 피하도록하자.

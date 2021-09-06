@@ -25,17 +25,20 @@ function App() {
       {
         id: 1,
         username: 'seok',
-        email: 'seok.@example.com'
+        email: 'seok.@example.com',
+        active: false
       },
       {
         id: 2,
         username: 'seokk',
-        email: 'seokk.@example.com'
+        email: 'seokk.@example.com',
+        active: false
       },
       {
         id: 3,
         username: 'seokkk',
-        email: 'seokkk.@example.com'
+        email: 'seokkk.@example.com',
+        active: false
       },
     ]);
 
@@ -62,6 +65,14 @@ function App() {
       setUsers(users.filter(user => user.id !== id)); // 조건 만족하면 true로서 선택하지않은 id를 가진 원소들만 새 배열에 들어간다.
     }
 
+    const onToggle = id => {
+      setUsers(users.map(
+        user => user.id === id
+        ? { ...user, active: !user.active }
+        : user
+      ))
+    }
+
     return (
       <>
       <Counter />
@@ -73,7 +84,7 @@ function App() {
         onChange={onChange} 
         onCreate={onCreate}
       />
-      <UserList users={users} onRemove={onRemove} />
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
       </>
     )
 }
