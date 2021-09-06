@@ -1,15 +1,16 @@
 import React, {useState, useRef} from 'react';
 // useState에서 기존에는 단지 문자열 값을 관리했지만 '문자', '숫자' 뿐만아니라 여러 개의 문자열을 저장하고 있는 '배열'이나 '객체'도 저장 가능하다.
 
-function InputSample() {
+function InputSample2() {
   const [inputs, setInputs] = useState({
     name: '',
     nickname: '',
   });
   // 여러 개의 문자열을 가지는 객체 형태의 상태 관리
-  const nameInput = useRef();
   const { name, nickname } = inputs;
   // 객체 비구조 할당
+  const nameInput = useRef();
+
 
 
   const changeContent = (e) => {
@@ -53,4 +54,4 @@ function InputSample() {
   )
 }
 
-export default InputSample
+export default InputSample2

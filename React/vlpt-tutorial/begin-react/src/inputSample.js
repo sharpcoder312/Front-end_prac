@@ -15,7 +15,7 @@ function InputSample() {
   return (
     <div>
       <h5>08 input 상태 관리하기</h5>
-      <input onChange={changeContent} value={content} />  {/* input의 초기값(value)로 content를 가져오는 것이 중요하다. */}
+      <input onChange={changeContent} value={content} />  {/* input의 초기값(value)으로 content를 가져오는 것이 중요하다. 그래야 setContent('')로 해당 input을 초기화 할 수 있기 때문이다.*/}
       <button onClick={resetContent}>초기화</button>
       <div>
         <b>값: </b>
