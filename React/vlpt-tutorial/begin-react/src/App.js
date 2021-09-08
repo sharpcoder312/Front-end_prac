@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from 'react';  
+import React, { useRef, useState, useMemo, useCallback } from 'react';  
 import Counter from './Counter';
 import CreateUser from './CreateUser';
 import InputSample from './inputSample';
@@ -17,13 +17,15 @@ function App() {
       email: '',
     })
     const { username, email } = inputs
-    const onChange = e => {
+    const onChange = useCallback(e => {
       const { name, value } = e.target;
       setInputs({
         ...inputs,
         [name]: value
       })
-    }
+    }, [inputs]); // onChange내에서 상태가 바뀔 시 의존하고 있는 값을 찾아보면 inputs라는 것을 알 수 있다.
+                  // 위와 같은 논리로 deps에 inputs를 넣어준다. 
+                  // 이렇게 되면 onChange함수는 inputs가 바뀔 때만 함수가 선언되며 그렇지 않다면 기존의 함수를 재사용하게 된다.
 
     const [users, setUsers] = useState([ // 배열에 항목 추가(사용자 인터렉션에 따른 동적인 상태변화로 취급)를 위해 component의 state로 관리해준다.
       {
@@ -48,7 +50,7 @@ function App() {
 
     const nextId = useRef(4); // 여기서 nextd를 useRef로 관리해준 이유는 4라는 값이 바뀐다고해서 굳이 component가 리렌더링 될 필요가 없기 때문이다.
 
-    const onCreate = () => {
+    const onCreate = useCallback(() => {
       const user = {
         id: nextId.current,
         username,
@@ -63,19 +65,19 @@ function App() {
       })
       console.log(nextId.current); // 4
       nextId.current += 1;
-    }
+    }, [username, email, users]) // username과 email 같은 경우에도 결국에 input에서 관리하는 상태이기 때문에 deps 배열에 넣어준다.
 
-    const onRemove = id => {
+    const onRemove = useCallback(id => {
       setUsers(users.filter(user => user.id !== id)); // 조건 만족하면 true로서 선택하지않은 id를 가진 원소들만 새 배열에 들어간다.
-    }
+    }, [users])
 
-    const onToggle = id => {
+    const onToggle = useCallback(id => {
       setUsers(users.map(
         user => user.id === id
         ? { ...user, active: !user.active }
         : user
       ))
-    }
+    }, [users])
 
     const count = useMemo(() => countActiveUsers(users), [users])
 
