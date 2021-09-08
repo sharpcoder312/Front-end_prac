@@ -1,11 +1,15 @@
-import React, { useRef, useState } from 'react';  
+import React, { useRef, useState, useMemo } from 'react';  
 import Counter from './Counter';
 import CreateUser from './CreateUser';
 import InputSample from './inputSample';
 import InputSample2 from './inputSample2';
 import UserList from './UserList';
-
 // 사실 import는 함수에 불러올 component를 입력하면서 자동 완성 기능을 통해 불러올 수도 있다.
+
+function countActiveUsers(users) {
+  console.log('활성 사용자 수를 세는중...');
+  return users.filter(user => user.active).length;
+}
 
 function App() {
     const [inputs, setInputs] = useState({
@@ -73,6 +77,8 @@ function App() {
       ))
     }
 
+    const count = useMemo(() => countActiveUsers(users), [users])
+
     return (
       <>
       <Counter />
@@ -85,6 +91,7 @@ function App() {
         onCreate={onCreate}
       />
       <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
+      <div>활성 사용자 수 : {count}</div>
       </>
     )
 }
