@@ -57,27 +57,27 @@ function App() {
         email,
         // 사실 여기서도 username과 email을 ...inputs로 대체할 수 있다.
       }
-      setUsers([...users, user]); // 방법1 ...spread문법 사용
+      setUsers(users => users.concat(user)); // 방법1 ...spread문법 사용
       // setUsers(users.concat(user)); // 방법2 concat함수 사용
       setInputs({ // 버튼 클릭 후 input에 있는 값 초기화
         username: '',
         email: ''
       })
-      console.log(nextId.current); // 4
       nextId.current += 1;
-    }, [username, email, users]) // username과 email 같은 경우에도 결국에 input에서 관리하는 상태이기 때문에 deps 배열에 넣어준다.
+    }, [username, email]) // username과 email 같은 경우에도 결국에 input에서 관리하는 상태이기 때문에 deps 배열에 넣어준다.
 
     const onRemove = useCallback(id => {
-      setUsers(users.filter(user => user.id !== id)); // 조건 만족하면 true로서 선택하지않은 id를 가진 원소들만 새 배열에 들어간다.
-    }, [users])
+      setUsers(users =>users.filter(user => user.id !== id)); // 조건 만족하면 true로서 선택하지않은 id를 가진 원소들만 새 배열에 들어간다.
+    }, [])
 
     const onToggle = useCallback(id => {
-      setUsers(users.map(
+      setUsers(users => users.map(
         user => user.id === id
         ? { ...user, active: !user.active }
         : user
       ))
-    }, [users])
+      console.log('gd');
+    }, [])
 
     const count = useMemo(() => countActiveUsers(users), [users])
 
