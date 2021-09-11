@@ -1,16 +1,32 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    default:
+      return state
+      // throw new Error('Unhandled action')
+  }
+  // useReducer를 사용함으로써 reducer함수를 통해 Counter 컴포넌트의 상태 로직을 컴포넌트 밖으로 빼내서 관리할 수 있다.
+}
 
 function Counter() {
-  const [number, setNumber] = useState(0);
+
+  const [number, dispatch] = useReducer(reducer, 0)
 
   const Increase = () => {
-    setNumber(number + 1);
+    dispatch({
+      type: 'INCREMENT'
+    })
   }
-  // 여기서 setNumber 안에는 '다음 상태'를 넣어주거나 '상태를 업데이트할 함수'를 넣어 줄 수도 있다.
-  // 값(상태)을 '어떻게 업데이트 할것인가'는  '함수형 업데이트'로 나타낼 수 있다.
-  // '함수형 업데이트'는 '성능 최적화'를 위해 사용된다.
+
   const Decrease = () => {
-    setNumber(prevNumber => prevNumber - 1);
+    dispatch({
+      type: 'DECREMENT'
+    })
   }
 
   return (
