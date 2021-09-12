@@ -5,9 +5,9 @@
 #### 학습 목록
 
 - HTML
-  - Kimbug
+  - Kimbug(김버그)
 - CSS
-  - Kimbug
+  - Kimbug(김버그)
   - Private
 - SASS
   - Private
@@ -20,3 +20,4 @@
   - TODO
   - Word-Relay
 - React
+  - vlpt-tutorial(벨로퍼트)
