@@ -21,3 +21,4 @@
   - Word-Relay
 - React
   - vlpt-tutorial(벨로퍼트)
+  - movie-app(노마드코더)
