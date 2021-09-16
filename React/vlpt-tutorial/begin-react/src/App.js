@@ -4,6 +4,8 @@ import CreateUser from './CreateUser';
 import InputSample from './inputSample';
 import InputSample2 from './inputSample2';
 import UserList from './UserList';
+import './App.scss';
+import Button from './components/Button';
 // 사실 import는 함수에 불러올 component를 입력하면서 자동 완성 기능을 통해 불러올 수도 있다.
 
 function countActiveUsers(users) {
@@ -94,6 +96,53 @@ function App() {
       />
       <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
       <div>활성 사용자 수 : {count}</div>
+      <div className="App">
+      <div className="buttons">
+        <Button size="large">BUTTON</Button>
+        <Button>BUTTON</Button>
+        <Button size="small">BUTTON</Button>
+      </div>
+      <div className="buttons">
+        <Button size="large" color="gray">
+          BUTTON
+        </Button>
+        <Button color="gray">BUTTON</Button>
+        <Button size="small" color="gray">
+          BUTTON
+        </Button>
+      </div>
+      <div className="buttons">
+        <Button size="large" color="pink">
+          BUTTON
+        </Button>
+        <Button color="pink">BUTTON</Button>
+        <Button size="small" color="pink">
+          BUTTON
+        </Button>
+      </div>
+      <div className="buttons">
+        <Button size="large" color="blue" outline>
+          BUTTON
+        </Button>
+        <Button color="gray" outline>
+          BUTTON
+        </Button>
+        <Button size="small" color="pink" outline>
+          BUTTON
+        </Button>
+      </div>
+      <div className="buttons">
+        <Button size="large" fullWidth>
+          BUTTON
+        </Button>
+        <Button size="large" color="gray" fullWidth>
+          BUTTON
+        </Button>
+        <Button size="large" color="pink" fullWidth>
+          BUTTON
+        </Button>
+      </div>
+    </div>
       </>
     )
 }
