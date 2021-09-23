@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import reset from "styled-reset"; // css 초기화
 
 const globalStyles = createGlobalStyle`
     ${reset};
