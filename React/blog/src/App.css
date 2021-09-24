@@ -1,0 +1,34 @@
+.App {
+  text-align: center;
+}
+
+body {
+  font-family: Courier, monospace;
+}
+
+.black-nav {
+  background: black;
+  width: 100%;
+  display: flex;
+  color: white;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.list {
+  margin-bottom: 30px;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.likeButton {
+  cursor: pointer;
+}
+
+.modal {
+  margin-top : 20px;
+  padding : 20px;
+  background : #eee;
+}
