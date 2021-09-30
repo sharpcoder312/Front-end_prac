@@ -42,9 +42,15 @@ function App(){
       <div className="container">
         <div className="row">
           { 
+            // shoes.map(
+            //   shoe => (<Item title={shoe.title} content={shoe.content} price={shoe.price} img={shoe.img} key={shoe.id}/>)
+            // )
             shoes.map(
-              shoe => (<Item title={shoe.title} content={shoe.content} price={shoe.price} key={shoe.id}/>)
+              (shoe, i) => (<Item shoes={shoes[i]}/>)
             )
+            // shoes.map(
+            //   (shoe, i) => (<Item shoes={shoe}/>)
+            // )
           }
         </div>
       </div>
@@ -52,14 +58,14 @@ function App(){
   )
 }
 
-function Item({title, content, price}) {
+function Item({shoes}) {
 
   return (
     <div className="col-md-4">
-      <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
-      <h4>{title}</h4>
-      <p>{content}</p>
-      <span>{price}</span>
+      <img src={shoes.img} width="100%" />
+      <h4>{shoes.title}</h4>
+      <p>{shoes.content}</p>
+      <span>{shoes.price}</span>
     </div>
   )
 }
