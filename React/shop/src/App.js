@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Navbar,Nav,NavDropdown,Jumbotron,Form,Button,FormControl } from 'react-bootstrap';
 import './App.css';
+import data from './data.js';
 
 function App(){
+  const [shoes, setShoes] = useState(data)
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -39,23 +41,25 @@ function App(){
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
-            <h4>상품명</h4>
-            <p>상품정보</p>
-          </div>
-          <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="100%" />
-            <h4>상품명</h4>
-            <p>상품정보</p>
-          </div>
-          <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="100%" />
-            <h4>상품명</h4>
-            <p>상품정보</p>
-          </div>
+          { 
+            shoes.map(
+              shoe => (<Item title={shoe.title} content={shoe.content} price={shoe.price} key={shoe.id}/>)
+            )
+          }
         </div>
       </div>
+    </div>
+  )
+}
+
+function Item({title, content, price}) {
+
+  return (
+    <div className="col-md-4">
+      <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+      <h4>{title}</h4>
+      <p>{content}</p>
+      <span>{price}</span>
     </div>
   )
 }
