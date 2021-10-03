@@ -1,17 +1,23 @@
-import React, { useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import './Detail.scss'
 
 function Detail({shoes}) {
 
   let { id } = useParams(); // 결과로 {}가 남음. { 사용자가 입력한 URL 파라미터들 }
   // id는 ':작명'에서 작명부분에 해당함
   let findShoe = shoes.find(function(shoe){
+    
     return shoe.id == id
   });
   let history = useHistory();
 
   return (
     <div className="container">
+      <div className="my-alert">
+        <p>재고가 얼마 남지 않았습니다.</p>
+      </div>
       <div className="row">
         <div className="col-md-6">
           <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />

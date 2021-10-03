@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Navbar,Nav,NavDropdown,Jumbotron,Form,Button,FormControl } from 'react-bootstrap';
 import './App.css';
 import data from './data.js';
-import Detail from './Detail'
+import Detail from './Detail/Detail'
 
 import { Link, Route, Switch } from 'react-router-dom'
 
@@ -15,10 +15,8 @@ function App(){
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link>
-              <Link to="/">
+            <Nav.Link as={Link} to="/">
                 Home
-              </Link>
             </Nav.Link>
             <Nav.Link>
               <Link to="/detail">

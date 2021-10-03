@@ -1,0 +1,15 @@
+@mixin basic() {
+  background : #eeeeee;
+  padding : 15px;
+  border-radius : 5px;
+  max-width : 500px;
+  width : 100%;
+  margin : auto;
+}
+
+.my-alert {
+  @include basic();
+  p {
+    margin-bottom : 0;
+  }
+}
