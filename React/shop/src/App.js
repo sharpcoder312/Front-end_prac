@@ -71,13 +71,9 @@ function App(){
           </div>
         </Route>
 
-        <Route path="/detail">
-            <Detail />
-        </Route>
-
-        <Route path="/:id"> 
-          {/* :id란 url의 파리미터를 의미함. 즉 /모든문자 경로를 의미. 그러므로 현재있는 모든 url에서 아래의 코드가 다 보여진다. */}
-            <div>hi</div>
+        <Route path="/detail/:id">
+          {/* ':작명'은 url 파리미터를 의미함. 즉 /모든문자 경로를 의미. 그러므로 현재있는 모든 url에서 아래의 코드가 다 보여진다. */}
+            <Detail shoes={shoes}/>
         </Route>
       </Switch>
     </div>
