@@ -3,11 +3,26 @@ import { Navbar,Nav,NavDropdown,Jumbotron,Form,Button,FormControl } from 'react-
 import './App.css';
 import data from './data.js';
 import Detail from './Detail/Detail'
+import axios from 'axios'
 
 import { Link, Route, Switch } from 'react-router-dom'
 
 function App(){
   const [shoes, setShoes] = useState(data)
+  const clickMore = () => {
+    // axios.post('서버URL', { id : 'codingapple', pw : 1234}) // post요청법. 요청시의 header 설정도 가능
+    // 로딩 중 UI 띄우기
+    axios.get('https://codingapple1.github.io/shop/data2.json')
+    .then((result)=>{
+      // 로딩 중 UI 안보이게하기
+      const newShoes = [...shoes, ...result.data];
+      setShoes(newShoes);
+    })
+    .catch(()=>{
+      // 로딩 중 UI 안보이게하기
+      console.log('fuck')
+    })
+  }
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -55,10 +70,10 @@ function App(){
               <div className="row">
                 { 
                   // shoes.map(
-                  //   shoe => (<Item title={shoe.title} content={shoe.content} price={shoe.price} img={shoe.img} key={shoe.id}/>)
+                  //   shoe => (<Item title={shoe.title} content={shoe.content} img={shoe.img} price={shoe.price} key={shoe.id}/>)
                   // )
                   shoes.map(
-                    (shoe, i) => (<Item shoes={shoes[i]}/>)
+                    (shoe, i) => (<Item shoes={shoes[i]} key={shoe.id}/>)
                   )
                   // shoes.map(
                   //   (shoe, i) => (<Item shoes={shoe}/>)
@@ -74,6 +89,9 @@ function App(){
             <Detail shoes={shoes}/>
         </Route>
       </Switch>
+      <button className="btn btn-primary" onClick={clickMore}>
+            더 보기          
+      </button>
     </div>
   )
 }
@@ -82,7 +100,7 @@ function Item({shoes}) {
 
   return (
     <div className="col-md-4">
-      <img src={shoes.img} width="100%" />
+      <img src={shoes.img} alt="img" width="100%" />
       <h4>{shoes.title}</h4>
       <p>{shoes.content}</p>
       <span>{shoes.price}</span>

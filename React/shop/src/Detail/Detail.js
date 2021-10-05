@@ -7,6 +7,7 @@ function Detail({shoes}) {
 
   let [ alert, setAlert ] = useState(true);
   useEffect(() => {
+    // axios.get => useEffect에서 axios쓰는 법. 물론 Detail 컴포넌트 처음 로드시에만 ajax로 데이터를 가져오려면 []를 꼭 써줘야한다.
     let timer = setTimeout(() => {
       setAlert(false)
     }, 2000)
