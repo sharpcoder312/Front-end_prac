@@ -1,8 +1,8 @@
 import React from 'react';
-import {Table} from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
 import { connect } from 'react-redux';
 
-function Cart({state}) {
+function Cart(props) {
   return (
     <div>
       <Table responsive>
@@ -12,12 +12,19 @@ function Cart({state}) {
           <th>수량</th>
           <th>변경</th>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>{state[0].name}</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
+        {
+          props.state.map((a, i) => {
+            return (
+              <tr key={i}>
+                <td>{a.id}</td>
+                <td>{a.name}</td>
+                <td>{a.quan}</td>
+                <td><button onClick={()=>{props.dispatch({ type: '수량증가'})}}>+</button></td>
+                <td><button onClick={()=>{props.dispatch({ type: '수량감소'})}}>-</button></td>
+              </tr>
+            )
+          })
+        }
       </Table>
     </div>
   )
