@@ -3,6 +3,7 @@ import { Navbar,Nav,NavDropdown,Jumbotron,Form,Button,FormControl } from 'react-
 import './App.css';
 import data from './data.js';
 import Detail from './Detail/Detail'
+import Cart from './Cart'
 import axios from 'axios'
 
 import { Link, Route, Switch } from 'react-router-dom'
@@ -100,12 +101,16 @@ function App(){
           </div>
         </Route>
 
-          <Route path="/detail/:id">
-            {/* ':작명'은 url 파리미터를 의미함. 즉 /모든문자 경로를 의미. 그러므로 현재있는 모든 url에서 아래의 코드가 다 보여진다. */}
-            <thingContext.Provider value={thing}> 
-              <Detail shoes={shoes}/>
-            </thingContext.Provider>     
-          </Route>
+        <Route path="/detail/:id">
+          {/* ':작명'은 url 파리미터를 의미함. 즉 /모든문자 경로를 의미. 그러므로 현재있는 모든 url에서 아래의 코드가 다 보여진다. */}
+          <thingContext.Provider value={thing}> 
+            <Detail shoes={shoes}/>
+          </thingContext.Provider>     
+        </Route>
+
+        <Route path="/cart">
+          <Cart></Cart>
+        </Route>
       </Switch>
 
     </div>
