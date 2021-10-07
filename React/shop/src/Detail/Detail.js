@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import './Detail.scss'
 import {thingContext} from '../App.js';
 
-import {CssTransition} from "react-transition-group";
+import {CSSTransition} from "react-transition-group";
 
 function Detail({shoes}) {
 
@@ -13,6 +13,7 @@ function Detail({shoes}) {
   let thing = useContext(thingContext);
 
   let [tab, setTab] = useState(0);
+  let [tabSwtch, setTabSwitch] = useState(false);
 
   useEffect(() => {
     // axios.get => useEffect에서 axios쓰는 법. 물론 Detail 컴포넌트 처음 로드시에만 ajax로 데이터를 가져오려면 []를 꼭 써줘야한다.
@@ -57,18 +58,22 @@ function Detail({shoes}) {
 
       <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
         <Nav.Item>
-          <Nav.Link eventKey="link-0" onClick={()=>{setTab(0)}}>Option 0</Nav.Link>
+          <Nav.Link eventKey="link-0" onClick={()=>{setTab(0); setTabSwitch(false)}}>Option 0</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link eventKey="link-1" onClick={()=>{setTab(1)}}>Option 1</Nav.Link>
+            <Nav.Link eventKey="link-1" onClick={()=>{setTab(1); setTabSwitch(false)}}>Option 1</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link eventKey="link-2" onClick={()=>{setTab(2)}}>Option 2</Nav.Link>
+            <Nav.Link eventKey="link-2" onClick={()=>{setTab(2); setTabSwitch(false)}}>Option 2</Nav.Link>
         </Nav.Item>
       </Nav>
 
-      {/* 삼항연산자는 경우의 수가 3개 이상일 때는 유용한 if문이 아니다. 그러므로 컴포넌트 함수를 만들어 그 안에 if문을 넣는방법을 사용한다.*/}
-      <TabContent tab={tab}/>
+      <CSSTransition in={tabSwtch} classNames="wow" timeout={500}>
+        {/* in은 애니메이션을 켜는 스위치라고 생각하면 된다. */}
+        <TabContent tab={tab} setTabSwitch={setTabSwitch}/>
+        {/* 삼항연산자는 경우의 수가 3개 이상일 때는 유용한 if문이 아니다. 그러므로 컴포넌트 함수를 만들어 그 안에 if문을 넣는방법을 사용한다.*/}
+      </CSSTransition>
+
     </div> 
   )
 
@@ -94,7 +99,12 @@ function Detail({shoes}) {
   // )
 }
 
-function TabContent({tab}) {
+function TabContent({tab, setTabSwitch}) {
+
+  useEffect(()=>{
+    setTabSwitch(true);
+  })
+
   if (tab === 0) {
   return <div>0번째 내용입니다.</div>
   } else if (tab === 1) {
