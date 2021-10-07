@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Navbar,Nav,NavDropdown,Jumbotron,Form,Button,FormControl } from 'react-bootstrap';
 import './App.css';
 import data from './data.js';
@@ -7,8 +7,15 @@ import axios from 'axios'
 
 import { Link, Route, Switch } from 'react-router-dom'
 
+export let thingContext = React.createContext()
+// 1. 같은 변수값을 공유할 범위 생성
+// 2. 같은 값을 공유할 HTML을 범위로 싸매기
+// 3. useContext(범위이름)로 공유된 값 사용(데이터 바인딩)하기
+
 function App(){
   const [shoes, setShoes] = useState(data)
+  const [thing, setThing] = useState([10,11,12])
+
   const clickMore = () => {
     // axios.post('서버URL', { id : 'codingapple', pw : 1234}) // post요청법. 요청시의 header 설정도 가능
     // 로딩 중 UI 띄우기
@@ -67,6 +74,9 @@ function App(){
               </p>
             </Jumbotron>
             <div className="container">
+              
+              <thingContext.Provider value={thing}> 
+              {/* value={공유 원하는 값} */}
               <div className="row">
                 { 
                   // shoes.map(
@@ -80,18 +90,24 @@ function App(){
                   // )
                 }
               </div>
+              <button className="btn btn-primary" onClick={clickMore}>
+                더 보기          
+              </button>
+
+              </thingContext.Provider>
+
             </div>
           </div>
         </Route>
 
-        <Route path="/detail/:id">
-          {/* ':작명'은 url 파리미터를 의미함. 즉 /모든문자 경로를 의미. 그러므로 현재있는 모든 url에서 아래의 코드가 다 보여진다. */}
-            <Detail shoes={shoes}/>
-        </Route>
+          <Route path="/detail/:id">
+            {/* ':작명'은 url 파리미터를 의미함. 즉 /모든문자 경로를 의미. 그러므로 현재있는 모든 url에서 아래의 코드가 다 보여진다. */}
+            <thingContext.Provider value={thing}> 
+              <Detail shoes={shoes}/>
+            </thingContext.Provider>     
+          </Route>
       </Switch>
-      <button className="btn btn-primary" onClick={clickMore}>
-            더 보기          
-      </button>
+
     </div>
   )
 }
@@ -103,9 +119,16 @@ function Item({shoes}) {
       <img src={shoes.img} alt="img" width="100%" />
       <h4>{shoes.title}</h4>
       <p>{shoes.content}</p>
-      <span>{shoes.price}</span>
+      <p>{shoes.price}</p>
+      <Thing/>
     </div>
   )
+}
+
+function Thing() {
+  let thing = useContext(thingContext);
+
+  return <p>{thing}</p>
 }
 
 export default App;
