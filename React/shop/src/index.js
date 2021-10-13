@@ -10,22 +10,32 @@ import { Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux';
 
 let defaultState = [ // 초기값. 즉, 변경 x값
-  { id : 0, name : 'niceshoe', quan : 2},
-  { id : 1, name : 'prettyshoe', quan : 1}
+  { id : 6, name : 'niceshoe', quan : 2},
+  { id : 7, name : 'prettyshoe', quan : 1}
 ]
 
 function reducer(state = defaultState, action) {
   if (action.type === '항목추가') {
-    let copy = [...state];
-    copy.push(action.payload);
-    return copy;
+    let found = state.findIndex((shoe) => {return shoe.id === action.payload.id});
+
+    if (found >= 0) {
+      let copy = [...state];
+      copy[found].quan++;
+      return copy;
+    } else {
+      let copy = [...state];
+      copy.push(action.payload);
+      return copy;
+    }
+
+
   } else if (action.type === '수량증가') { // 데이터 수정 조건. '수량증가'라는 데이터 수정방법을 정의한 것이다.
     let copy = [...state];
-    copy[0].quan++;
+    copy[action.payload].quan++;
     return copy
   } else if (action.type === '수량감소') {
     let copy2 = [...state];
-    copy2[0].quan--;
+    copy2[action.payload].quan--;
     return copy2;
   } else {
     return state

@@ -7,9 +7,10 @@ import {thingContext} from '../App.js';
 
 import {CSSTransition} from "react-transition-group";
 
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 
-function Detail(props) {
+function Detail({shoes}) {
+  let dispatch = useDispatch();
 
   let [ alert, setAlert ] = useState(true);
   let thing = useContext(thingContext);
@@ -27,7 +28,7 @@ function Detail(props) {
 
   let { id } = useParams(); // 결과로 {}가 남음. { 사용자가 입력한 URL 파라미터들 }
   // id는 ':작명'에서 작명부분에 해당함
-  let findShoe = props.shoes.find(function(shoe){
+  let findShoe = shoes.find(function(shoe){
     
     return shoe.id == id
   });
@@ -53,7 +54,7 @@ function Detail(props) {
           <p>재고 : {thing[0]}</p>
           {/* findShoe대신에 shoes[id]를 넣을 수도 있겠지만 이렇게되면 고유 id인 영구번호가 아닌 index에 의존하므로 item을 정렬할 시에 index와 고유 id가 다르게되어 문제가 생긴다. */}
           <button className="btn btn-danger" onClick={()=>{
-            props.dispatch({type : '항목추가', payload : {id:2, name:'새상품', quan:1}});
+            dispatch({type : '항목추가', payload : {id:findShoe.id, name:findShoe.title, quan:1}});
             history.push('/cart'); // redux도 새로고침하면 초기화되는 데, router를 이용하여 페이지 이동시의 새로고침을 막음. 
             }}>주문하기</button> 
           <button className="btn btn-dark" onClick={()=>{history.goBack()}}>뒤로가기</button> 

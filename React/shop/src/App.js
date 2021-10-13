@@ -6,7 +6,7 @@ import Detail from './Detail/Detail'
 import Cart from './Cart'
 import axios from 'axios'
 
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch, useHistory } from 'react-router-dom'
 
 export let thingContext = React.createContext()
 // 1. 같은 변수값을 공유할 범위 생성
@@ -118,9 +118,10 @@ function App(){
 }
 
 function Item({shoes}) {
+  let history = useHistory();
 
   return (
-    <div className="col-md-4">
+    <div className="col-md-4" onClick={()=>{history.push('/detail/' + shoes.id)}}>
       <img src={shoes.img} alt="img" width="100%" />
       <h4>{shoes.title}</h4>
       <p>{shoes.content}</p>
